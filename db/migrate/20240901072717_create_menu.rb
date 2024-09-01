@@ -8,7 +8,7 @@ class CreateMenu < ActiveRecord::Migration[7.0]
       t.boolean :availability, null: false, default: true
       t.integer :price, null: false
       t.text :description
-      t.integer :tax_amount, null: false, default: 0
+      t.decimal :tax_amount, null: false, default: 0
 
       t.timestamps
     end

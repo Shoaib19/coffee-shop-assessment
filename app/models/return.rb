@@ -6,10 +6,11 @@
 #
 #  id         :integer          not null, primary key
 #  reason     :text             not null
-#  status     :integer          not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
 class Return < ApplicationRecord
+  validates :reason, presence: true
+
   has_many :order_item, dependent: :destroy
 end

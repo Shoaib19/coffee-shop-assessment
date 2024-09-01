@@ -6,8 +6,8 @@ class CreateCustomer < ActiveRecord::Migration[7.0]
       t.string :name, null: false
       t.string :email, null: false
       t.string :phone, null: false
-      t.integer :card_type, null: false
-      t.text :card_number, null: false
+      t.integer :card_type
+      t.text :card_number
 
       t.timestamps
     end
