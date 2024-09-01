@@ -15,8 +15,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_09_01_075612) do
     t.string "name", null: false
     t.string "email", null: false
     t.string "phone", null: false
-    t.integer "card_type", null: false
-    t.text "card_number", null: false
+    t.integer "card_type"
+    t.text "card_number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -27,13 +27,13 @@ ActiveRecord::Schema[7.0].define(version: 2024_09_01_075612) do
     t.boolean "availability", default: true, null: false
     t.integer "price", null: false
     t.text "description"
-    t.integer "tax_amount", default: 0, null: false
+    t.decimal "tax_amount", default: "0.0", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "notifications", force: :cascade do |t|
-    t.integer "status", null: false
+    t.integer "notify_status", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "customer_id"
@@ -58,6 +58,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_09_01_075612) do
   create_table "orders", force: :cascade do |t|
     t.integer "status", null: false
     t.integer "total_price", default: 0, null: false
+    t.decimal "total_tax", default: "0.0", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "payment_id"
@@ -67,7 +68,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_09_01_075612) do
   end
 
   create_table "payments", force: :cascade do |t|
-    t.integer "status", null: false
+    t.integer "payment_status", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "customer_id"
@@ -78,7 +79,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_09_01_075612) do
 
   create_table "returns", force: :cascade do |t|
     t.text "reason", null: false
-    t.integer "status", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

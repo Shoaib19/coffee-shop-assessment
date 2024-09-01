@@ -14,7 +14,15 @@
 #  return_id    :integer
 #
 class OrderItem < ApplicationRecord
+  validates :quantity, presence: true, numericality: { greater_than: 0 }
+
   belongs_to :menu_item, class_name: 'Menu', foreign_key: :menu_item_id
   belongs_to :order
-  belogns_to :return, optional: true
+  belongs_to :return, optional: true
+
+  delegate :price, :tax_amount, to: :menu_item, prefix: true
+
+  def item_name
+    menu_item.item_name
+  end
 end

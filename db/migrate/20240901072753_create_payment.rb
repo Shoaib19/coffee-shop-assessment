@@ -3,7 +3,7 @@
 class CreatePayment < ActiveRecord::Migration[7.0]
   def change
     create_table :payments do |t|
-      t.integer :status, null: false
+      t.integer :payment_status, null: false
 
       t.timestamps
     end

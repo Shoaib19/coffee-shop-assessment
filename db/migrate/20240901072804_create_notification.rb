@@ -3,7 +3,7 @@
 class CreateNotification < ActiveRecord::Migration[7.0]
   def change
     create_table :notifications do |t|
-      t.integer :status, null: false
+      t.integer :notify_status, null: false
 
       t.timestamps
     end
