@@ -168,5 +168,3 @@ The server will run at `http://localhost:3000`.
 - if user order includes the "Veggie Wrap" along with the "Lemonade" then he will get 50% discount on both of these 
 - if user order includes the "Turkey Club Sandwich" along with the "Iced Coffee" then he can get free "Iced Coffee" max 3 in each order
 - the PostMan collection is added under the name of "coffee-shop-collection.postman_collection.json" to this repo
-
-```
