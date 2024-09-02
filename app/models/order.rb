@@ -19,7 +19,6 @@ class Order < ApplicationRecord
   validates :total_tax, presence: true
 
   validate :total_price_is_valid
-  # validate :total_tax_is_valid
 
   has_one :notification, dependent: :destroy
   has_one :payment, dependent: :destroy
@@ -49,12 +48,6 @@ class Order < ApplicationRecord
     return if total_price.present? && total_price.positive? && total_price <= 100_000
 
     errors.add(:total_price, 'must be greater than 0 and less than or equal to 100,000')
-  end
-
-  def total_tax_is_valid
-    return if total_tax.present? && total_tax >= 0.0 && total_tax <= 100.0
-
-    errors.add(:total_tax, 'must be between 0.0 and 100.0')
   end
 
   def initialize_order

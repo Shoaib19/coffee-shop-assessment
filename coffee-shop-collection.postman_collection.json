@@ -1,0 +1,115 @@
+{
+	"info": {
+		"_postman_id": "da80a0d1-7af2-4c96-9520-e3604c6a495d",
+		"name": "coffee-shop-collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "16634791"
+	},
+	"item": [
+		{
+			"name": "getMenu",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/menu",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"menu"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CreateNewOrder",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"order\": {\n            \"customer\": {\n                \"name\": \"Paula\",\n                \"email\": \"Paula@coffee.com\",\n                \"phone\": \"0300 999 8888\"\n            },\n            \"items\": [\n                {\n                    \"name\": \"Espresso\", \n                    \"quantity\": 3\n                },\n                {\n                    \"name\": \"Green Tea\",\n                    \"quantity\": 1\n                },\n                {\n                    \"name\": \"Veggie Wrap\",\n                    \"quantity\": 4\n                },\n                {\n                    \"name\": \"Lemonade\",\n                    \"quantity\": 1\n                },\n                {\n                    \"name\": \"Turkey Club Sandwich\",\n                    \"quantity\": 1\n                },\n                {\n                    \"name\": \"Iced Coffee\",\n                    \"quantity\": 3\n                },\n                {\n                    \"name\": \"Cappuccino\",\n                    \"quantity\": 1\n                }\n            ]\n        }\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/orders/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"orders",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PayForOrder",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"payment\": {\n            \"order_id\": 17,\n            \"card_number\": \"5555 5555 5555 4444\",\n            \"card_type\": \"credit\"\n        }\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/pay",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"pay"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ReturnItems",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"return\": {\n            \"order_id\": 14,\n            \"item_ids\": [98],\n            \"reason\": \"not fresh\"\n        }\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/return/items",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"return",
+						"items"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
