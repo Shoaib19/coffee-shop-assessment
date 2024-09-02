@@ -4,12 +4,18 @@
 class PaymentsController < ApplicationController
   def create
     payment = PaymentService.new(payment_params).call
-    list = create_order_item_list(payment)
-    response = 'Thank you for your payment, it has been processed successfully.' \
-    " Your order has been sent to the kitchen, and we'll notify you as soon as it's ready." \
-    'there are the list of items {id, name} you can use ids if you want to return items' \
-    "#{list}" \
-    ' using the api POST return/items see README for payload info'
+    response = if payment
+                 list = create_order_item_list(payment)
+                 'Thank you for your payment, it has been processed successfully.' \
+                 " Your order has been sent to the kitchen, and we'll notify you as soon as it's ready." \
+                 'there are the list of items {id, name} you can use ids if you want to return items' \
+                 "#{list}" \
+                 ' using the api POST return/items see README for payload info'
+               else
+                 'Please make sure you pass a valid order id, card number and a valid card type' \
+                 't’s possible that the payment has already been made.'
+               end
+
     render json: { response: }
   end
 

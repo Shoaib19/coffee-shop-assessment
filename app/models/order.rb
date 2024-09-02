@@ -59,12 +59,16 @@ class Order < ApplicationRecord
 
   def initialize_order
     self.status = 'pending'
-    self.total_tax = order_items.sum { |item| find_price_by_quantity(item) * item.menu_item_tax_amount }
+    self.total_tax = order_items.sum { |item| (find_price_by_quantity(item) * item.menu_item_tax_amount).round }
     items_price = order_items.sum { |item| find_price_by_quantity(item) }
     self.total_price = (items_price + total_tax).round
   end
 
   def find_price_by_quantity(item)
-    item.menu_item_price * item.quantity
+    return item.menu_item_price * item.quantity if item.discount <= 0
+
+    discounted_price = (item.menu_item_price * item.discount).round
+    new_price = item.menu_item_price - discounted_price
+    new_price.zero? ? 0 : new_price * item.quantity
   end
 end
